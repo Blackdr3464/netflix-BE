@@ -10,7 +10,7 @@ const authController = {
             const hashed = await bcrypt.hash(req.body.password, salt);
 
             // create new user
-            const newUser = await new User({
+            const newUser = new User({
                 email: req.body.email,
                 password: hashed,
             });

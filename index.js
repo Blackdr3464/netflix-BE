@@ -11,9 +11,18 @@ const app = express();
 dotenv.config();
 
 // connect mongoose
-mongoose.connect(process.env.MONGODB_URL, () => {
-    console.log('connect mongoose success');
-});
+mongoose
+    .connect(process.env.MONGODB_URL, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+    })
+    .then(() => {
+        console.log('Connected db');
+        app.listen(process.env.PORT_START, () => {
+            console.log('server listening!!!');
+        });
+    })
+    .catch((err) => console.log('Failed to connect', err));
 
 app.use(cors());
 app.use(express.json());
@@ -22,7 +31,3 @@ app.use(express.json());
 app.use('/v1/auth', authRouter);
 app.use('/v1/user', userRouter);
 app.use('/v1/film', filmRouter);
-
-app.listen(process.env.PORT_START, () => {
-    console.log('server listening!!!');
-});
