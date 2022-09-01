@@ -10,6 +10,7 @@ const app = express();
 
 dotenv.config();
 
+const port = 8000;
 // connect mongoose
 mongoose
     .connect(process.env.MONGODB_URL, {
@@ -18,7 +19,7 @@ mongoose
     })
     .then(() => {
         console.log('Connected db');
-        app.listen(process.env.PORT_START, () => {
+        app.listen(process.env.PORT_START || port, () => {
             console.log('server listening!!!');
         });
     })
