@@ -20,7 +20,7 @@ mongoose
     .then(() => {
         console.log('Connected db');
         app.listen(port, () => {
-            console.log('server listening!!!');
+            console.log('server listening!!!', port);
         });
     })
     .catch((err) => console.log('Failed to connect', err));
