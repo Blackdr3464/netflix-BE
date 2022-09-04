@@ -11,9 +11,11 @@ const app = express();
 dotenv.config();
 
 const port = process.env.PORT || 8000;
+const urlMongoDB = `${process.env.MONGODB_URL}`;
+console.log(urlMongoDB);
 // connect mongoose
 mongoose
-    .connect(process.env.MONGODB_URL, {
+    .connect(urlMongoDB, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
     })
