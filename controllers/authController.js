@@ -37,19 +37,19 @@ const authController = {
                 return res.status(404).json('wrong password');
             }
             if (user && password) {
-                const accessToken = jwt.sign(
-                    {
-                        id: user.id,
-                        admin: user.admin,
-                    },
-                    process.env.ACCESS_KEY,
-                    { expiresIn: '30d' }
-                );
+                // const accessToken = jwt.sign(
+                //     {
+                //         id: user.id,
+                //         admin: user.admin,
+                //     },
+                //     process.env.ACCESS_KEY,
+                //     { expiresIn: '30d' }
+                // );
                 // privite pass
                 // const { password, ...others } = user._doc;
 
                 // return res.status(200).json({ ...others });
-                return res.status(200).json(user);
+                res.status(200).json(user);
             }
         } catch (error) {
             return res.status(500).json(error);
